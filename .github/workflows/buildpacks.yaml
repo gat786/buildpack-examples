@@ -8,6 +8,11 @@ on:
 
 jobs:
   pack-install:
+    strategy:
+      matrix:
+        languages:
+          - java
+          - python
     runs-on: ubuntu-latest
     steps:
       - name: Install Pack Cli
@@ -27,6 +32,6 @@ jobs:
 
       - name: build
         shell: bash
-        working-directory: python
+        working-directory: ${{ matrix.languages }}
         run: |
-          pack build --builder gcr.io/buildpacks/builder python-function
+          pack build --builder gcr.io/buildpacks/builder ${{ matrix-languages }}-function
