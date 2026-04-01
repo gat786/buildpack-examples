@@ -14,5 +14,9 @@ def read_root():
     return {"Hello": "World"}
 
 
-if __name__ == "__main__":
+def main():
     uvicorn.run("main:app", port=port, reload=(run_env == "dev"))
+
+
+if __name__ == "__main__":
+    main()
