@@ -1,0 +1,11 @@
+name: Buildpack build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  pack_build:
+    uses: ubuntu-latest
+    steps:
+      name: Echo
+      shell: echo "Hello world"
