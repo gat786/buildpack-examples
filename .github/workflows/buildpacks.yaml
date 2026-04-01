@@ -34,4 +34,4 @@ jobs:
         shell: bash
         working-directory: ${{ matrix.languages }}
         run: |
-          pack build --builder gcr.io/buildpacks/builder ${{ matrix-languages }}-function
+          pack build --builder gcr.io/buildpacks/builder ${{ matrix.languages }}-function
