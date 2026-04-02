@@ -17,6 +17,9 @@ jobs:
     permissions:
       packages: write
       contents: read
+      id-token: write
+    env:
+      REGISTRY: ghcr.io
     steps:
       - name: Install Pack Cli
         shell: bash
@@ -25,11 +28,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install pack-cli
 
-      # build-docker-image:
-      #   runs-on: ubuntu-latest
-      #   needs:
-      #     - pack-install
-      #   steps:
       - name: checkout
         uses: actions/checkout@v6
 
@@ -43,6 +41,13 @@ jobs:
         shell: bash
         run: |
           docker tag ${{ matrix.languages }}-function ghcr.io/gat786/buildpack-samples-${{ matrix.languages }}-function
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: push
         shell: bash
