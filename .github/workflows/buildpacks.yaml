@@ -43,3 +43,8 @@ jobs:
         shell: bash
         run: |
           docker tag ${{ matrix.languages }}-function ghcr.io/gat786/buildpack-samples-${{ matrix.languages }}-function
+
+      - name: push
+        shell: bash
+        run: |
+          docker push ghcr.io/gat786/buildpack-samples-${{ matrix.languages }}-function
