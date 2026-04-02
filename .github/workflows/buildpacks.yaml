@@ -13,6 +13,7 @@ jobs:
         languages:
           - java
           - python
+          - nodejs
     runs-on: ubuntu-latest
     permissions:
       packages: write
