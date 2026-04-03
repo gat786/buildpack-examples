@@ -14,5 +14,5 @@ a Cloud Run Function.
 
 In our Github actions present [here](./.github/workflows/buildpacks.yaml) file we 
 1. Install the Pack CLI
-2. Run the command `pack build --builder gcr.io/buildpacks/builder .` from the code directories.
+2. Run the command `pack build --builder gcr.io/buildpacks/builder image-name` from the code directories.
 3. Pack CLI would build a docker image for us and we can then push the docker image thus created to any container image compliant OCI registry, in our case we upload it to [ghcr](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
